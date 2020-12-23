@@ -109,6 +109,17 @@ public class Point implements Comparable<Point> {
      */
     public Comparator<Point> slopeOrder() {
         /* YOUR CODE HERE */
+        return new BySlope();
+    }
+
+    private class BySlope implements Comparator<Point> {
+        public int compare(Point p1, Point p2) {
+            Double s1 = slopeTo(p1);
+            Double s2 = slopeTo(p2);
+            if (s1 < s2) return -1;
+            if (s2 < s1) return 1;
+            return 0;
+        }
 
     }
 
@@ -130,5 +141,11 @@ public class Point implements Comparable<Point> {
      */
     public static void main(String[] args) {
         /* YOUR CODE HERE */
+        Point[] points = new Point[5];
+        for (int i = 0; i < 5; i++) {
+            points[i] = new Point(i, 0);
+        }
+        
+
     }
 }
